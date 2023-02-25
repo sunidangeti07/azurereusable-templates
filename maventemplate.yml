@@ -31,7 +31,7 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: spring-petclinic/target/spring-petclinic.war
+      PathtoPublish: '$(Build.Repository.LocalPath)'
       ArtifactName: 'drop'
       publishLocation: 'container'
 
