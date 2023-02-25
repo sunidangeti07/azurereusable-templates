@@ -34,6 +34,12 @@ steps:
       PathtoPublish: '$(Build.Repository.LocalPath)'
       ArtifactName: 'drop'
       publishLocation: 'container'
+      
+  - task: DownloadBuildArtifacts@1
+    inputs:
+      buildType: 'current'
+      downloadType: 'single'
+      downloadPath: '$(System.ArtifactsDirectory)'    
 
 
 
