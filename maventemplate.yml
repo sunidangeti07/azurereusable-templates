@@ -31,9 +31,9 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-    PathtoPublish: spring-petclinic/target/spring-petclinic.war
-    ArtifactName: 'drop'
-    publishLocation: 'container'
+      PathtoPublish: spring-petclinic/target/spring-petclinic.war
+      ArtifactName: 'drop'
+      publishLocation: 'container'
 
 
 
