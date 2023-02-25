@@ -1,0 +1,40 @@
+---
+parameters:
+- name: myfirst
+  type: string
+  default: ubuntu-latest
+  values:
+   - default
+   - ubuntu-latest
+- name: jdkVersion
+  type: string
+  default: 1.17
+  displayName: 'Java Version'
+- name: package
+  type: string
+  default: package 
+  displayName: mavenwork
+  values:
+    - build
+    - test
+    - package
+    - compile  
+
+steps: 
+  - task: Maven@3
+    inputs:
+      mavenPOMFile: 'pom.xml'  
+      goals: '${{ parameters.package }}'
+      publishJUnitResults: true
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      jdkVersionOption: '${{ parameters.jdkVersion }}'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+    PathtoPublish: spring-petclinic/target/spring-petclinic.war
+    ArtifactName: 'drop'
+    publishLocation: 'container'
+
+
+
+
